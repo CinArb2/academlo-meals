@@ -28,7 +28,10 @@ const createOrder = catchAsync(async (req, res, next) => {
 })
 
 const getUserOrders = catchAsync(async (req, res, next) => {
+  const { userSession } = req
+
   const userOrders = await Order.findAll({
+    where: { userId: userSession.id },
     include: [
       {
         model: Meal,
@@ -41,17 +44,17 @@ const getUserOrders = catchAsync(async (req, res, next) => {
 })
 
 const completeOrder = catchAsync(async (req, res, next) => {
-  const { meal } = req
+  const { order } = req
 
-  await meal.update({ status: 'completed' })
+  await order.update({ status: 'completed' })
 
   res.status(200).json({ status: 'success' })
 })
 
 const deleteOrder = catchAsync(async (req, res, next) => {
-  const { meal } = req
+  const { order } = req
 
-  await meal.update({ status: 'deleted' })
+  await order.update({ status: 'cancelled' })
 
   res.status(200).json({ status: 'success' })
 })

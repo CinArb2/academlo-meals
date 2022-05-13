@@ -9,9 +9,7 @@ const {
 } = require('../controllers/meals.controllers')
 
 const { restaurantExist } = require('../middlewares/restaurants.middlewares')
-
 const { checkValidations, mealValidations } = require('../middlewares/validations.middlewares')
-
 const { mealExist } = require('../middlewares/meals.middlewares')
 
 const { protectToken, protectRole } = require('../middlewares/users.middlewares')

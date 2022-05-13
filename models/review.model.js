@@ -23,6 +23,10 @@ const Review = db.define('review', {
   rating: {
     type: DataTypes.INTEGER,
     allowNull: false
+  },
+  status: {
+    type: DataTypes.STRING,
+    defaultValue: 'active'
   }
 })
 

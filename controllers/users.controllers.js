@@ -110,7 +110,7 @@ const getOrderById = catchAsync(async (req, res, next) => {
   })
 
   if (!individualUserOrder) {
-    return next(new AppError('invalid order id', 404))
+    return next(new AppError('order with provided id does not exist', 404))
   }
 
   res.status(200).json({ individualUserOrder })
